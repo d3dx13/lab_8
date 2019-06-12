@@ -1,2 +1,2 @@
-# lab_7
-Hello SSL
+# lab_8
+Hello GUI
