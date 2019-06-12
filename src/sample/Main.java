@@ -9,6 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import javax.xml.stream.FactoryConfigurationError;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
@@ -19,6 +20,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("startWindow.fxml"));
         primaryStage.setTitle("Авторизация");
         primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }
