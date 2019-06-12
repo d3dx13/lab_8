@@ -14,6 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Авторизация");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
+
     }
 
 
