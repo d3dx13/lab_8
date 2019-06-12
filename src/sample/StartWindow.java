@@ -1,17 +1,15 @@
 package sample;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class StartWindow {
 
@@ -25,20 +23,35 @@ public class StartWindow {
     private Button signUpButton;
 
     @FXML
-    private TextField loginField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
     private Button signInButton;
 
     @FXML
+    private Button chooseLoginButton;
+
+    @FXML
+    private Button helpButton;
+
+    @FXML
+    private Button chooseServerButton;
+
+    @FXML
+    private Label loginText;
+
+    @FXML
+    private Label addressText;
+
+    @FXML
+    private Label portText;
+
+    @FXML
+    private Button exitButton;
+
+    @FXML
     void initialize() {
-        signUpButton.setOnAction(event -> {
-            signUpButton.getScene().getWindow().hide();
+        chooseLoginButton.setOnAction(event -> {
+            chooseLoginButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/registrationWindow.fxml"));
+            loader.setLocation(getClass().getResource("/sample/editWindow.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

@@ -15,7 +15,7 @@ import static lab_8.client.core.NetworkConnection.getServerAddress;
  * Оболочка клиента.
  * Реализует консольный интерфейс для работы в Offline режиме.
  */
-public class Client {
+public class    Client {
     private static BufferedReader reader;
     public static void main(String[] args) {
         try {
