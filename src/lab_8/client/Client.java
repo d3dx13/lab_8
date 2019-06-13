@@ -101,7 +101,7 @@ public class    Client {
         if (getServerAddress() == null)
             server();
         try {
-            if (NetworkConnection.signIn())
+            if (NetworkConnection.signIn(""))
                 ConsoleGUI.main();
         } catch (Exception ex){
             System.out.println(ex.getMessage());

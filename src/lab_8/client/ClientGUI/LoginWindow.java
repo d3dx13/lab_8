@@ -11,6 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import static lab_8.Settings.loginMaximalLength;
+import static lab_8.Settings.loginMinimalLength;
+
 public class LoginWindow {
 
     @FXML
@@ -28,8 +31,14 @@ public class LoginWindow {
     @FXML
     void initialize() {
         acceptButton.setOnAction(event -> {
+            /*
             try {
+
                 ClientData.login = newText.getText().trim();
+                if (login.length() < loginMinimalLength || login.length() > loginMaximalLength){
+                    System.out.println(String.format("!!! Login must be %d to %d characters !!!", loginMinimalLength, loginMaximalLength));
+                    return;
+                }
                 if(ClientData.login.length()>2) {
                     Parent root = FXMLLoader.load(getClass().getResource("/lab_8/client/ClientGUI/startWindow.fxml"));
                     Scene scene = new Scene(root);
@@ -41,6 +50,8 @@ public class LoginWindow {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            */
         });
+
     }
 }

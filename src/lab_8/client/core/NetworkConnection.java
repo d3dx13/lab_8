@@ -24,6 +24,7 @@ import java.time.Instant;
 import java.util.Arrays;
 
 import static lab_8.Settings.*;
+import static lab_8.client.ClientGUI.StartWindow.*;
 
 /**
  * Класс для реализации сетевой коммуникации на стороне клиента.
@@ -69,7 +70,7 @@ public class NetworkConnection {
             RegistrationRequest registrationRequest = new RegistrationRequest();
             registrationRequest.login = objectCryption.getUserLogin();
             if (objectCryption.getUserLogin().length() < loginMinimalLength || objectCryption.getUserLogin().length() > loginMaximalLength) {
-                System.out.println("!!! Login must be %d to %d characters !!!");
+                bigBox.appendText("!!! Login must be %d to %d characters !!!");
                 return false;
             }
 
@@ -97,30 +98,24 @@ public class NetworkConnection {
      * Процесс авторизации.
      * @return Успешность
      */
-    public static boolean signIn() {
+    public static boolean signIn(String password) {
         try {
-            String password;
-            Console console = System.console();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             IdentificationRequest identificationRequest = new IdentificationRequest();
             identificationRequest.login = NetworkConnection.objectCryption.getUserLogin();
             IdentificationResponse identificationResponse = identification(identificationRequest);
             AuthenticationRequest authenticationRequest = new AuthenticationRequest();
-            System.out.print("Logging in...\nEnter your password: ");
-
-            password = reader.readLine();
-            //password = new String(console.readPassword());
+            bigBox.appendText("Logging in...\n");
 
             MessageDigest sha = MessageDigest.getInstance("SHA-224");
             SecretKeySpec secretKeySpec = new SecretKeySpec(Arrays.copyOf(sha.digest(password.getBytes(Charset.forName("UTF-8"))), userAESKeySize), "AES");
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
             byte[] privateKey;
-            System.out.println(identificationResponse.message);
+            bigBox.appendText(identificationResponse.message);
             try {
                 privateKey = cipher.doFinal(identificationResponse.privateKey);
             } catch (Exception ex) {
-                System.out.println("\nPassword incorrect");
+                bigBox.appendText("Password incorrect\n");
                 return false;
             }
             Cipher cipher2 = Cipher.getInstance("RSA");
@@ -128,7 +123,7 @@ public class NetworkConnection {
             try {
                 authenticationRequest.random = cipher2.doFinal(identificationResponse.random);
             } catch (Exception e) {
-                System.out.println("\nPassword incorrect");
+                bigBox.appendText("Password incorrect\n");
                 return false;
             }
             authenticationRequest.login = NetworkConnection.objectCryption.getUserLogin();
@@ -138,16 +133,16 @@ public class NetworkConnection {
                 try {
                     secretKey = cipher2.doFinal(authenticationResponse.secretKey);
                 } catch (Exception e) {
-                    System.out.println("\nPassword incorrect");
+                    bigBox.appendText("Password incorrect\n");
                     return false;
                 }
                 objectCryption.setSecretKey(secretKey);
                 return true;
             }
-            System.out.println("Authentication failed: " + authenticationResponse.message);
+            bigBox.appendText("Authentication failed: " + authenticationResponse.message + "\n");
             return false;
         } catch (Exception ex){
-            System.out.println(ex.getMessage());
+            bigBox.appendText(ex.getMessage() + "\n");
             return false;
         }
     }
