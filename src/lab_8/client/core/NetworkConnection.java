@@ -1,5 +1,6 @@
 package lab_8.client.core;
 
+import lab_8.Settings;
 import lab_8.message.Crypted;
 import lab_8.message.Message;
 import lab_8.message.loggingIn.*;
@@ -196,7 +197,7 @@ public class NetworkConnection {
     /**
      * Текущее сетевое соединение.
      */
-    private static InetSocketAddress serverAddress;
+    private static InetSocketAddress serverAddress = new InetSocketAddress(Settings.databaseHost, Settings.databasePort);
     /**
      * Экземпляр класса ObjectCryption для работы с шифрованием и сериализацией.
      */

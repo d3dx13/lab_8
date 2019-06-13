@@ -45,4 +45,8 @@ public final class Settings {
      * Путь к базе данных.
      */
     public final static String databasePath = "src/database/";
+
+    public final static String databaseHost = "localhost";
+    public final static int databasePort = 25768;
+
 }
