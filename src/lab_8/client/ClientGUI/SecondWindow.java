@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import lab_8.client.core.CommandParser;
-
 public class SecondWindow {
 
     @FXML
@@ -29,7 +28,7 @@ public class SecondWindow {
     private Button addButton;
 
     @FXML
-    private Button showButton;
+    private Button disconnectButton;
 
     @FXML
     private Button addMinButton;
