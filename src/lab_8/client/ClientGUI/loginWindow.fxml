@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab_8.client.ClientGUI.LoginWindow">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="254.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab_8.client.ClientGUI.LoginWindow">
    <children>
-      <TextField fx:id="newText" layoutX="15.0" layoutY="10.0" prefHeight="29.0" prefWidth="171.0" promptText="Логин">
+      <TextField fx:id="newText" layoutX="15.0" layoutY="71.0" prefHeight="29.0" prefWidth="228.0" promptText="Логин">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="acceptButton" layoutX="15.0" layoutY="45.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" style="-fx-background-color: #FFCB00;" text="Принять" textFill="WHITE">
+      <Button fx:id="acceptButton" layoutX="15.0" layoutY="109.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="228.0" style="-fx-background-color: #FFCB00;" text="Принять" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
+      <Label layoutX="16.0" layoutY="17.0" prefHeight="36.0" prefWidth="228.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
