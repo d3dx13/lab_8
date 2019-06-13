@@ -1,4 +1,4 @@
-package lab_8.JavaFX;
+package lab_8.client.ClientGUI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

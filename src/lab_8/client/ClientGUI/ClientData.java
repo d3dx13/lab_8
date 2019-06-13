@@ -1,4 +1,4 @@
-package lab_8.JavaFX;
+package lab_8.client.ClientGUI;
 
 public class ClientData {
     public static String login="";

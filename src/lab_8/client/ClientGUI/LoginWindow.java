@@ -1,4 +1,4 @@
-package lab_8.JavaFX;
+package lab_8.client.ClientGUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,7 +31,7 @@ public class LoginWindow {
             try {
                 ClientData.login = newText.getText().trim();
                 if(ClientData.login.length()>2) {
-                    Parent root = FXMLLoader.load(getClass().getResource("/lab_8/JavaFX/startWindow.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/lab_8/client/ClientGUI/startWindow.fxml"));
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);

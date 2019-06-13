@@ -1,4 +1,4 @@
-package lab_8.JavaFX;
+package lab_8.client.ClientGUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,7 +51,7 @@ public class StartWindow {
         loginText.setText("Текущий логин: "+ClientData.login);
         chooseLoginButton.setOnAction(event -> {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/lab_8/JavaFX/loginWindow.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/lab_8/client/ClientGUI/loginWindow.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -66,7 +66,7 @@ public class StartWindow {
         portText.setText("Порт текущего сервера: \n");
         chooseServerButton.setOnAction(event -> {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/lab_8/JavaFX/loginWindow.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/lab_8/client/ClientGUI/Window.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
