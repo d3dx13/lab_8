@@ -87,21 +87,21 @@ public class StartWindow {
                 }
                 NetworkConnection.objectCryption.setUserLogin(login);
                 CommandParser.setUserLogin(login);
-                String password = passwordText.getText().trim();
-                if (password.equals("")) {
-                    bigBox.appendText("!!! Введите ваш пароль !!!\n");
+                String email = emailText.getText().trim();
+                System.out.println(email);
+                if (emailText.equals("")) {
+                    bigBox.appendText("!!! Введите ваш email !!!\n");
                     return;
                 }
                 try {
-                    String resp = NetworkConnection.signIn(password);
+                    String resp = NetworkConnection.signUp(email);
                     System.out.print(resp);
                     bigBox.appendText(resp);
                     if (resp.substring(resp.length() - 8, resp.length()-1).equals("success"))
-                        ConsoleGUI.main();
+                        bigBox.appendText("\nВы зарегистрированы\n");
                 } catch (Exception ex){
                     bigBox.appendText(ex.getMessage());
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

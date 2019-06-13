@@ -79,7 +79,7 @@ public class NetworkConnection {
             resultString.append("Registration: \n");
             if (registrationResponse.confirm) {
                 resultString.append(registrationResponse.message);
-                return resultString.toString();
+                return resultString.toString()+"success\n";
             } else
                 resultString.append("failed\nReason: " + registrationResponse.message + "\n");
             return resultString.toString();
@@ -135,7 +135,7 @@ public class NetworkConnection {
                     return resultString.toString();
                 }
                 objectCryption.setSecretKey(secretKey);
-                return resultString.toString()+"\nsuccess\n";
+                return resultString.toString()+"success\n";
             }
             resultString.append("Authentication failed: " + authenticationResponse.message + "\n");
             return resultString.toString();
