@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -49,18 +50,16 @@ public class StartWindow {
     @FXML
     void initialize() {
         chooseLoginButton.setOnAction(event -> {
-            chooseLoginButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/editWindow.fxml"));
             try {
-                loader.load();
-            } catch (IOException e) {
+                Parent root = FXMLLoader.load(getClass().getResource("/sample/editWindow.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
         });
     }
 }
