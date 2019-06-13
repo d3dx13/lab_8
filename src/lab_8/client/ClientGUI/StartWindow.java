@@ -97,8 +97,8 @@ public class StartWindow {
                     System.out.print(resp);
                     bigBox.appendText(resp);
                     if (resp.substring(resp.length() - 8, resp.length()-1).equals("success"))
-                        bigBox.appendText("\nВы зарегистрированы\n");
-                } catch (Exception ex){
+
+                    } catch (Exception ex){
                     bigBox.appendText(ex.getMessage());
                 }
             } catch (Exception e) {
