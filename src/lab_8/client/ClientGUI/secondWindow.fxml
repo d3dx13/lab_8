@@ -21,7 +21,7 @@
                   <Font name="Comic Sans MS" size="44.0" />
                </font>
             </Label>
-            <TextArea fx:id="bigTextBox" disable="true" layoutX="6.0" layoutY="62.0" prefHeight="340.0" prefWidth="787.0" />
+            <TextArea fx:id="bigTextBox" layoutX="6.0" layoutY="62.0" prefHeight="340.0" prefWidth="787.0" />
             <TextField fx:id="insertText" layoutX="17.0" layoutY="412.0" prefHeight="26.0" prefWidth="769.0" promptText="Введите параметры объекта в JSON" />
             <Button fx:id="addButton" contentDisplay="CENTER" layoutX="17.0" layoutY="449.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #FFCB00;" text="Добавить" textFill="WHITE">
                <font>
