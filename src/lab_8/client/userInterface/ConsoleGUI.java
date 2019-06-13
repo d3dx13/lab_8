@@ -57,11 +57,4 @@ public class ConsoleGUI {
             }
         }
     }
-
-    public static String passwordInsert()
-    {
-        Console console = System.console();
-        String password = new String(console.readPassword());
-        return password;
-    }
 }
