@@ -30,9 +30,9 @@ public class    Client {
                     } else if (command.length() > 4 && command.substring(0, 5).equals("login")) {
                         login();
                     } else if (command.length() > 6 && command.substring(0, 7).equals("connect")) {
-                        connect();
+                        //connect();
                     } else if (command.length() > 11 && command.substring(0, 12).equals("registration")) {
-                        registration();
+                        //registration();
                     } else if (command.length() > 5 && command.substring(0, 6).equals("server")) {
                         server();
                     } else if (command.length() > 3 && command.substring(0, 4).equals("exit")) {
@@ -97,6 +97,7 @@ public class    Client {
     /**
      * Попытка подключения к серверу.
      */
+    /*
     private static void connect()  {
         if (getServerAddress() == null)
             server();
@@ -107,13 +108,16 @@ public class    Client {
             System.out.println(ex.getMessage());
         }
     }
+    */
     /**
      * Попытка регистрации на сервере.
      */
+    /*
     private static void registration(){
         if (getServerAddress() == null)
             server();
-        if (NetworkConnection.signUp())
+        if (NetworkConnection.signUp(""))
             connect();
     }
+    */
 }

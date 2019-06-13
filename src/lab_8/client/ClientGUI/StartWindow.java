@@ -37,7 +37,7 @@ public class StartWindow {
     private PasswordField passwordText;
 
     @FXML
-    public static TextArea bigBox;
+    private TextArea bigBox;
 
     @FXML
     private Button helpButton;
@@ -52,18 +52,24 @@ public class StartWindow {
     void initialize() {
         signInButton.setOnAction(event -> {
             try {
+                System.out.println(bigBox);
                 String login = loginText.getText().trim();
                 if (login.length() < loginMinimalLength || login.length() > loginMaximalLength){
-                    bigBox.appendText(String.format("!!! Login must be %d to %d characters !!!\n", loginMinimalLength, loginMaximalLength));
+                    bigBox.appendText(String.format("!!! Логин должен быть от %d до %d символов !!!\n", loginMinimalLength, loginMaximalLength));
                     return;
                 }
                 NetworkConnection.objectCryption.setUserLogin(login);
                 CommandParser.setUserLogin(login);
                 String password = passwordText.getText().trim();
-                if (password.equals(""))
+                if (password.equals("")) {
+                    bigBox.appendText("!!! Введите ваш пароль !!!\n");
                     return;
+                }
                 try {
-                    if (NetworkConnection.signIn(password))
+                    String resp = NetworkConnection.signIn(password);
+                    System.out.print(resp);
+                    bigBox.appendText(resp);
+                    if (resp.substring(resp.length() - 8, resp.length()-1).equals("success"))
                         ConsoleGUI.main();
                 } catch (Exception ex){
                     bigBox.appendText(ex.getMessage());

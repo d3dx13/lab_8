@@ -64,67 +64,65 @@ public class NetworkConnection {
      * Процесс регистрации.
      * @return Успешность
      */
-    public static boolean signUp() {
+    public static String signUp(String email) {
+        StringBuffer resultString = new StringBuffer();
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             RegistrationRequest registrationRequest = new RegistrationRequest();
             registrationRequest.login = objectCryption.getUserLogin();
             if (objectCryption.getUserLogin().length() < loginMinimalLength || objectCryption.getUserLogin().length() > loginMaximalLength) {
-                bigBox.appendText("!!! Login must be %d to %d characters !!!");
-                return false;
+                resultString.append("!!! Login must be %d to %d characters !!!\n");
+                return resultString.toString();
             }
-
-            System.out.println(new StringBuilder()
-                    .append("Введите вашу электронную почту (на неё будет отправлен пароль): "));
-            registrationRequest.email = reader.readLine().trim();
-            System.out.println("Waiting for registration from the server");
+            registrationRequest.email = email;
+            resultString.append("Waiting for registration from the server\n");
             RegistrationResponse registrationResponse = registration(registrationRequest);
-            System.out.print("Registration: ");
+            resultString.append("Registration: \n");
             if (registrationResponse.confirm) {
-                System.out.println(registrationResponse.message);
-                return true;
+                resultString.append(registrationResponse.message);
+                return resultString.toString();
             } else
-                System.out.println("failed\nReason: " + registrationResponse.message);
-            return false;
+                resultString.append("failed\nReason: " + registrationResponse.message + "\n");
+            return resultString.toString();
         }catch (UnresolvedAddressException ex){
-            System.out.println("Address is incorrect");
-            return false;
+            resultString.append("Address is incorrect\n");
+            return resultString.toString();
         } catch (Exception ex){
-            System.out.println(ex.getMessage());
-            return false;
+            resultString.append(ex.getMessage() + "\n");
+            return resultString.toString();
         }
     }
     /**
      * Процесс авторизации.
      * @return Успешность
      */
-    public static boolean signIn(String password) {
+    public static String signIn(String password) {
+        StringBuffer resultString = new StringBuffer();
         try {
             IdentificationRequest identificationRequest = new IdentificationRequest();
             identificationRequest.login = NetworkConnection.objectCryption.getUserLogin();
             IdentificationResponse identificationResponse = identification(identificationRequest);
             AuthenticationRequest authenticationRequest = new AuthenticationRequest();
-            bigBox.appendText("Logging in...\n");
+            resultString.append("Logging in...\n");
 
             MessageDigest sha = MessageDigest.getInstance("SHA-224");
             SecretKeySpec secretKeySpec = new SecretKeySpec(Arrays.copyOf(sha.digest(password.getBytes(Charset.forName("UTF-8"))), userAESKeySize), "AES");
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
             byte[] privateKey;
-            bigBox.appendText(identificationResponse.message);
+            resultString.append(identificationResponse.message);
             try {
                 privateKey = cipher.doFinal(identificationResponse.privateKey);
             } catch (Exception ex) {
-                bigBox.appendText("Password incorrect\n");
-                return false;
+                resultString.append("Password incorrect\n");
+                return resultString.toString();
             }
             Cipher cipher2 = Cipher.getInstance("RSA");
             cipher2.init(Cipher.DECRYPT_MODE, KeyFactory.getInstance("RSA").generatePrivate(new PKCS8EncodedKeySpec(privateKey)));
             try {
                 authenticationRequest.random = cipher2.doFinal(identificationResponse.random);
             } catch (Exception e) {
-                bigBox.appendText("Password incorrect\n");
-                return false;
+                resultString.append("Password incorrect\n");
+                return resultString.toString();
             }
             authenticationRequest.login = NetworkConnection.objectCryption.getUserLogin();
             AuthenticationResponse authenticationResponse = authentication(authenticationRequest);
@@ -133,17 +131,17 @@ public class NetworkConnection {
                 try {
                     secretKey = cipher2.doFinal(authenticationResponse.secretKey);
                 } catch (Exception e) {
-                    bigBox.appendText("Password incorrect\n");
-                    return false;
+                    resultString.append("Password incorrect\n");
+                    return resultString.toString();
                 }
                 objectCryption.setSecretKey(secretKey);
-                return true;
+                return resultString.toString()+"\nsuccess\n";
             }
-            bigBox.appendText("Authentication failed: " + authenticationResponse.message + "\n");
-            return false;
+            resultString.append("Authentication failed: " + authenticationResponse.message + "\n");
+            return resultString.toString();
         } catch (Exception ex){
-            bigBox.appendText(ex.getMessage() + "\n");
-            return false;
+            resultString.append(ex.getMessage() + "\n");
+            return resultString.toString();
         }
     }
     /**
