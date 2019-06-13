@@ -31,6 +31,15 @@ public class SecondWindow {
     private Button showButton;
 
     @FXML
+    private Button helpButton;
+
+    @FXML
+    private Button addMinButton;
+
+    @FXML
+    private Button addMaxButton;
+
+    @FXML
     void initialize() {
 
     }
