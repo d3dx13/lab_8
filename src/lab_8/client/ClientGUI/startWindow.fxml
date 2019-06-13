@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="717.0" style="-fx-background-color: #05326D;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab_8.client.ClientGUI.StartWindow">
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="400.0" prefWidth="717.0" style="-fx-background-color: #05326D;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab_8.client.ClientGUI.StartWindow">
    <children>
-      <AnchorPane layoutY="96.0" prefHeight="304.0" prefWidth="717.0" style="-fx-background-color: #fafafa;">
+      <AnchorPane layoutY="96.0" prefHeight="505.0" prefWidth="800.0" style="-fx-background-color: #fafafa;">
          <children>
             <Button fx:id="signInButton" contentDisplay="CENTER" layoutX="471.0" layoutY="139.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="234.0" style="-fx-background-color: #FFCB00;" text="Войти" textFill="WHITE">
                <font>
@@ -19,7 +19,7 @@
             </Button>
             <TextField fx:id="loginText" layoutX="472.0" layoutY="16.0" prefHeight="26.0" prefWidth="234.0" promptText="Логин" />
             <PasswordField fx:id="passwordText" layoutX="472.0" layoutY="56.0" prefHeight="26.0" prefWidth="234.0" promptText="Пароль" />
-            <TextArea fx:id="bigBox" editable="false" layoutX="15.0" layoutY="16.0" prefHeight="275.0" prefWidth="447.0" />
+            <TextArea fx:id="bigBox" editable="false" layoutX="15.0" layoutY="16.0" prefHeight="477.0" prefWidth="447.0" />
             <Button fx:id="signUpButton" contentDisplay="CENTER" layoutX="470.0" layoutY="253.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="234.0" style="-fx-background-color: #FFCB00;" text="Зарегистрироваться" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
