@@ -97,12 +97,10 @@ public class SecondWindow {
         });
     }
     void showTable(){
-
         try {
             Message response = NetworkConnection.command(CommandParser.getMessageFromJSON("show"));
             bigTextBox.clear();
             printTable(response);
-            bigTextBox.appendText(response.text + "\n");
         } catch (Exception e) {
             bigTextBox.clear();
             bigTextBox.appendText(e.getMessage() + "\n");
@@ -116,7 +114,7 @@ public class SecondWindow {
         if (message.values == null)
             return;
         if (message.values.size() == 0){
-            System.out.print("\n--- Collection is Empty ---\n");
+            bigTextBox.appendText("\n--- Collection is Empty ---\n");
             return;
         }
         String [] tableHeader  = new String [] {
@@ -168,7 +166,7 @@ public class SecondWindow {
                 tableHeader[6],
                 tableHeader[7]);
         printLine('-', header.length() - 1);
-        System.out.print(header);
+        bigTextBox.appendText(header);
         printLine('-', header.length() - 1);
         StringBuffer stringBuffer = new StringBuffer();
         for (Object iter : message.values){
@@ -183,7 +181,7 @@ public class SecondWindow {
                     dancer.positionState,
                     dancer.owner));
         }
-        System.out.print(stringBuffer.toString());
+        bigTextBox.appendText(stringBuffer.toString());
         printLine('-', header.length() - 1);
     }
     /**
@@ -193,8 +191,8 @@ public class SecondWindow {
      */
     private void printLine(char symbol, int len){
         for (int i = 0; i < len; i++)
-            System.out.print(symbol);
-        System.out.print('\n');
+            bigTextBox.appendText(symbol+"");
+        bigTextBox.appendText('\n'+"");
     }
 }
 
