@@ -88,8 +88,7 @@ public class StartWindow {
                 NetworkConnection.objectCryption.setUserLogin(login);
                 CommandParser.setUserLogin(login);
                 String email = emailText.getText().trim();
-                System.out.println(email);
-                if (emailText.equals("")) {
+                if (email.equals("")) {
                     bigBox.appendText("!!! Введите ваш email !!!\n");
                     return;
                 }
