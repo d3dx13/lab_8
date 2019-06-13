@@ -19,16 +19,21 @@
             </Button>
             <TextField fx:id="loginText" layoutX="472.0" layoutY="16.0" prefHeight="26.0" prefWidth="234.0" promptText="Логин" />
             <PasswordField fx:id="passwordText" layoutX="472.0" layoutY="56.0" prefHeight="26.0" prefWidth="234.0" promptText="Пароль" />
-            <TextArea fx:id="bigBox" layoutX="15.0" layoutY="16.0" prefHeight="477.0" prefWidth="447.0" />
             <Button fx:id="signUpButton" contentDisplay="CENTER" layoutX="470.0" layoutY="253.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="234.0" style="-fx-background-color: #FFCB00;" text="Зарегистрироваться" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Button>
             <TextField fx:id="emailText" layoutX="472.0" layoutY="98.0" prefHeight="26.0" prefWidth="234.0" promptText="Email" />
+            <Button fx:id="helpButton" contentDisplay="CENTER" layoutX="471.0" layoutY="195.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="234.0" style="-fx-background-color: #FFCB00;" text="Справка" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="bigBox" layoutX="12.0" layoutY="10.0" prefHeight="482.0" prefWidth="451.0" />
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="243.0" layoutY="7.0" text="Танцоры" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="243.0" layoutY="5.0" text="Танцоры" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS" size="56.0" />
          </font>

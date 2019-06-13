@@ -40,6 +40,9 @@ public class StartWindow {
     public static TextArea bigBox;
 
     @FXML
+    private Button helpButton;
+
+    @FXML
     private Button signUpButton;
 
     @FXML
