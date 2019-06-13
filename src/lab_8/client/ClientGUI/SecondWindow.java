@@ -59,8 +59,53 @@ public class SecondWindow {
             } catch (Exception e) {
                 bigTextBox.appendText(e.getMessage()+ "\n");
             }
+            showTable();
         });
-
+        addMaxButton.setOnAction(event -> {
+            String command = "add_if_max " + insertText.getText().trim();
+            Message message = CommandParser.getMessageFromJSON(command);
+            try {
+                Message response = NetworkConnection.command(message);
+                bigTextBox.appendText(response.text + "\n");
+            } catch (Exception e) {
+                bigTextBox.appendText(e.getMessage()+ "\n");
+            }
+            showTable();
+        });
+        addMinButton.setOnAction(event -> {
+            String command = "add_if_min " + insertText.getText().trim();
+            Message message = CommandParser.getMessageFromJSON(command);
+            try {
+                Message response = NetworkConnection.command(message);
+                bigTextBox.appendText(response.text + "\n");
+            } catch (Exception e) {
+                bigTextBox.appendText(e.getMessage()+ "\n");
+            }
+            showTable();
+        });
+        deleteButton.setOnAction(event -> {
+            String command = "remove " + insertText.getText().trim();
+            Message message = CommandParser.getMessageFromJSON(command);
+            try {
+                Message response = NetworkConnection.command(message);
+                bigTextBox.appendText(response.text + "\n");
+            } catch (Exception e) {
+                bigTextBox.appendText(e.getMessage()+ "\n");
+            }
+            showTable();
+        });
+    }
+    void showTable(){
+        String command = "show";
+        Message message = CommandParser.getMessageFromJSON(command);
+        try {
+            Message response = NetworkConnection.command(message);
+            bigTextBox.clear();
+            bigTextBox.appendText(response.text + "\n");
+        } catch (Exception e) {
+            bigTextBox.clear();
+            bigTextBox.appendText(e.getMessage()+ "\n");
+        }
     }
 }
 
