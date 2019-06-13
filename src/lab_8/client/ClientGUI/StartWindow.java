@@ -52,7 +52,6 @@ public class StartWindow {
     void initialize() {
         signInButton.setOnAction(event -> {
             try {
-                System.out.println(bigBox);
                 String login = loginText.getText().trim();
                 if (login.length() < loginMinimalLength || login.length() > loginMaximalLength){
                     bigBox.appendText(String.format("!!! Логин должен быть от %d до %d символов !!!\n", loginMinimalLength, loginMaximalLength));
@@ -75,16 +74,33 @@ public class StartWindow {
                     bigBox.appendText(ex.getMessage());
                 }
 
-                /*
-
-                    Parent root = FXMLLoader.load(getClass().getResource("/lab_8/client/ClientGUI/startWindow.fxml"));
-                    Scene scene = new Scene(root);
-                    Stage stage = new Stage();
-                    stage.setScene(scene);
-                    stage.show();
-                    ((Node) (event.getSource())).getScene().getWindow().hide();
-
-                */
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        signUpButton.setOnAction(event -> {
+            try {
+                String login = loginText.getText().trim();
+                if (login.length() < loginMinimalLength || login.length() > loginMaximalLength){
+                    bigBox.appendText(String.format("!!! Логин должен быть от %d до %d символов !!!\n", loginMinimalLength, loginMaximalLength));
+                    return;
+                }
+                NetworkConnection.objectCryption.setUserLogin(login);
+                CommandParser.setUserLogin(login);
+                String password = passwordText.getText().trim();
+                if (password.equals("")) {
+                    bigBox.appendText("!!! Введите ваш пароль !!!\n");
+                    return;
+                }
+                try {
+                    String resp = NetworkConnection.signIn(password);
+                    System.out.print(resp);
+                    bigBox.appendText(resp);
+                    if (resp.substring(resp.length() - 8, resp.length()-1).equals("success"))
+                        ConsoleGUI.main();
+                } catch (Exception ex){
+                    bigBox.appendText(ex.getMessage());
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -92,3 +108,12 @@ public class StartWindow {
         });
     }
 }
+
+/*
+                    Parent root = FXMLLoader.load(getClass().getResource("/lab_8/client/ClientGUI/startWindow.fxml"));
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                    ((Node) (event.getSource())).getScene().getWindow().hide();
+                */
