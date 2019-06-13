@@ -68,8 +68,14 @@ public class StartWindow {
                     String resp = NetworkConnection.signIn(password);
                     System.out.print(resp);
                     bigBox.appendText(resp);
-                    if (resp.substring(resp.length() - 8, resp.length()-1).equals("success"))
-                        ConsoleGUI.main();
+                    if (resp.substring(resp.length() - 8, resp.length()-1).equals("success")){
+                        Parent root = FXMLLoader.load(getClass().getResource("/lab_8/client/ClientGUI/secondWindow.fxml"));
+                        Scene scene = new Scene(root);
+                        Stage stage = new Stage();
+                        stage.setScene(scene);
+                        stage.show();
+                        ((Node) (event.getSource())).getScene().getWindow().hide();
+                    }
                 } catch (Exception ex){
                     bigBox.appendText(ex.getMessage());
                 }
@@ -96,15 +102,8 @@ public class StartWindow {
                     String resp = NetworkConnection.signUp(email);
                     System.out.print(resp);
                     bigBox.appendText(resp);
-                    if (resp.substring(resp.length() - 8, resp.length()-1).equals("success")) {
+                    if (resp.substring(resp.length() - 8, resp.length()-1).equals("success"))
                         bigBox.appendText("\nВы зарегистрированы\n");
-                        Parent root = FXMLLoader.load(getClass().getResource("/lab_8/client/ClientGUI/secondWindow.fxml"));
-                        Scene scene = new Scene(root);
-                        Stage stage = new Stage();
-                        stage.setScene(scene);
-                        stage.show();
-                        ((Node) (event.getSource())).getScene().getWindow().hide();
-                    }
                     } catch (Exception ex){
                     bigBox.appendText(ex.getMessage());
                 }
@@ -114,12 +113,3 @@ public class StartWindow {
         });
     }
 }
-
-/*
-                    Parent root = FXMLLoader.load(getClass().getResource("/lab_8/client/ClientGUI/startWindow.fxml"));
-                    Scene scene = new Scene(root);
-                    Stage stage = new Stage();
-                    stage.setScene(scene);
-                    stage.show();
-                    ((Node) (event.getSource())).getScene().getWindow().hide();
-                */
