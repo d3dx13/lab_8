@@ -1,6 +1,5 @@
-package sample;
+package lab_8.JavaFX;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -49,9 +48,25 @@ public class StartWindow {
 
     @FXML
     void initialize() {
+        loginText.setText("Текущий логин: "+ClientData.login);
         chooseLoginButton.setOnAction(event -> {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/sample/editWindow.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/lab_8/JavaFX/loginWindow.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        addressText.setText("Адрес текущего сервера: \n"+ClientData.serverAddress);
+        portText.setText("Порт текущего сервера: \n");
+        chooseServerButton.setOnAction(event -> {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/lab_8/JavaFX/loginWindow.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
